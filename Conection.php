@@ -6,48 +6,31 @@ ini_set('display_errors', '1');
 <html>
  <head>
  	<title>Exemple de lectura de dades a MySQL</title>
- 	<style>
- 		body{
- 		}
- 		table,td {
- 			border: 1px solid black;
- 			border-spacing: 0px;
- 		}
- 	</style>
  </head>
  
  <body>
- 	<h1>Exemple de lectura de dades a MySQL</h1>
- 
- 	<?php
- 		$conn = mysqli_connect('localhost','quin','P@ssw0rd');
- 
- 		mysqli_select_db($conn, 'world');
- 
- 		$consulta = "SELECT * FROM city;";
- 
- 		$resultat = mysqli_query($conn, $consulta);
- 		if (!$resultat) {
-     			$message  = 'Consulta invàlida: ' . mysqli_error() . "\n";
-     			$message .= 'Consulta realitzada: ' . $consulta;
-     			die($message);
- 		}
- 	?>
- 
- 	<table>
- 	<thead><td colspan="4" align="center" bgcolor="cyan">Llistat de ciutats</td></thead>
- 	<?php
- 		while( $registre = mysqli_fetch_assoc($resultat) )
- 		{
- 			echo "\t<tr>\n";
- 			echo "\t\t<td>".$registre["Name"]."</td>\n";
- 			echo "\t\t<td>".$registre['CountryCode']."</td>\n";
- 			echo "\t\t<td>".$registre["District"]."</td>\n";
- 			echo "\t\t<td>".$registre['Population']."</td>\n";
- 
- 			echo "\t</tr>\n";
- 		}
- 	?>
- 	</table>	
- </body>
+ 	<h1 align="center">Exemple de lectura de dades a MySQL</h1>
+    <form align="center" action="Tabla_Ciudades.php" method="post">
+    	<select id="desplegable" name="pais">
+    		<?php
+    		$conn = mysqli_connect('localhost','adrian','Hakantor');
+    		mysqli_select_db($conn, 'world');
+    		$consulta = "SELECT name,code FROM country;";
+    		$resultat = mysqli_query($conn, $consulta);
+    		if (!$resultat) {
+    			$message  = 'Consulta invàlida: ' . mysqli_error() . "\n";
+    			$message .= 'Consulta realitzada: ' . $consulta;
+    			die($message);
+    		}
+
+    		if ($resultat) {
+    			while($row = mysqli_fetch_assoc($resultat)) {
+    				echo "<option>".$row['name']."</option>";
+    			}
+    		}
+    		?>	
+ 		</select>
+ 		<input type="submit" name="submit" value="Seleccionar">
+ 	</form>
+</body>
 </html>
