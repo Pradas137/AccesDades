@@ -1,9 +1,14 @@
+<?php
+error_reporting(E_ALL);
+ini_set('display_errors', '1');
+?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nueva Ciudad</title>
     <style type="text/css">
         #Contenedor{
             margin-top: 10px;
@@ -16,60 +21,55 @@
             border-radius: 20px;
             text-decoration: none;
             cursor: pointer;
-            font-size: 20px;
         }
     </style>
-    <title>Nueva Ciudad</title>
 </head>
 
 <body>
-    <?php
-    $conn = mysqli_connect('localhost','adrian','Hakantor');
-    mysqli_select_db($conn, 'world');
+     <?php
+     $conn = mysqli_connect('localhost','adrian','Hakantor');
+     mysqli_select_db($conn, 'world');
 
-    $insert = "INSERT INTO city VALUES (null, '$_POST[city_name]', '$_POST[country_name]', '$_POST[district]', $_POST[population]);";
-    $res = mysqli_query($conn, $insert);
-    if (mysqli_query($conn, $insert)) {
-        echo "<p>Ciudad añadida correctamente</p>";
-    } else {
-        echo "<p>Ciudad no añadida</p>";
-        echo mysqli_error($conn);
-    }
-    }
-    ?>
+     if (isset($_POST['CountryCode']) && isset($_POST['City']) && isset($_POST['District']) && isset($_POST['Population'])) {
 
-    <?php
-    $consulta = "SELECT name, code FROM country;";
+        $consulta = "INSERT INTO city (Name,CountryCode,District,Population) VALUES ('".$_POST['City']."','".$_POST['CountryCode']."','".$_POST['District']."',".$_POST['Population'].")";
+    }
+    $consulta = "SELECT Code,Name FROM country;";
     $resultat = mysqli_query($conn, $consulta);
     if (!$resultat) {
-        $msg = 'Consulta invàlida: ' . mysqli_error($conn) . "\n";
-        $msg .= 'Consulta realitzada: ' . $consulta;
-        die($msg);
+        $message  = 'Consulta invàlida: ' . mysqli_error($conn) . "\n";
+        $message .= 'Consulta realitzada: ' . $consulta;
+        die($message);
     }
     ?>
-    <h1 align="center">Nueva Ciudad</h1>
+    <h1>Nueva Ciudad</h1>
 
-    <form align="center" action="" method="post">
-        <label for="Pais">Pais: </label>
-        <select name="country_name" id="Pais">
-            <?php while ($row = mysqli_fetch_assoc($resultat)) { ?>
-                <option value="<?= $row["code"] ?>"><?= $row["name"] ?></option>
-            <?php } ?>
-        </select>
-        <br><br>
-        <label for="Ciudad">Ciudad: </label>
-        <input type="text" name="city_name" id="Ciudad" required>
-        <br><br>
-        <label for="Distrito">Distrito: </label>
-        <input  type="text" name="district" id="Distrito" required>
-        <br><br>
-        <label for="Poblacion">Poblacion: </label>
-        <input type="number" name="population" id="Poblacion" required>
-        <br><br>
-        <input id="enlace" type="submit" value="Seleccionar">
+    <form method="post" action="Nueva_Ciudad.php">
+
+    <select name="CountryCode" required>
+    <?php
+
+    echo "<option disabled selected value> -- Selecciona un païs -- </option>";
+
+    mysqli_data_seek($resultat, 0);
+
+    while ($registre = mysqli_fetch_assoc($resultat)) {
+
+        echo "<option value=\"".$registre['Code']."\">".$registre['Name']."</option>\n";
+    }
+
+    ?>
+    </select>
+
+    <input type="text" name="City" placeholder="Ciudad" required>
+    <input type="text" name="District" placeholder="Distrito"required>
+    <input type="number" name="Population" placeholder="Poblacion" required>
+    <input id="enlace" type="Submit" value="Afegir ciutat">
+
     </form>
-     <div id="Contenedor">
-        <a href="Coneccion.php" id="enlace">Seleccionar Pais</a>
+
+    <div id="Contenedor">
+        <a href="Coneccion.php" id="enlace">Nueva Ciudad</a>
     </div>
 </body>
 
