@@ -6,6 +6,20 @@ ini_set('display_errors', '1');
 <html>
  <head>
  	<title>Exemple de lectura de dades a MySQL</title>
+    <style type="text/css">
+        #Contenedor{
+            margin-top: 10px;
+            text-align: center;
+        }
+        #enlace{
+            background-color: black;
+            color: yellow;
+            padding: 10px;
+            border-radius: 20px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
  </head>
  
  <body>
@@ -30,7 +44,10 @@ ini_set('display_errors', '1');
     		}
     		?>	
  		</select>
- 		<input type="submit" name="submit" value="Seleccionar">
+ 		<input id="enlace" type="submit" name="submit" value="Seleccionar">
  	</form>
+     <div id="Contenedor">
+        <a href="Nueva_Ciudad.php" id="enlace">Nueva Ciudad</a>
+    </div>
 </body>
 </html>

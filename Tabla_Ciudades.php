@@ -6,6 +6,11 @@
  		table,td {
  			border: 1px solid black;
  			border-spacing: 0px;
+ 			font-size: 20px;
+ 			width: 50px; height: 50px;
+ 		}
+ 		img{
+ 			width: 20px; height: 20px;
  		}
  	</style>
 </head>
@@ -27,8 +32,9 @@
 			$resultat = mysqli_query($conn ,$consultaCity);
 			if ($resultat) {
 				while($row = mysqli_fetch_assoc($resultat)) {
-					$img = "<img src='gif/".strtolower($row['Code']).".gif'/>";
+					$img = "<img src='./Banderas/".strtolower($row['Code']).".gif'/>";
 					echo "\t<tr>\n";
+					echo "<td>".$img."</td>";
 					echo "<td>".$row['Name']."</td>";
 					echo "\t</tr>\n";
 				}
