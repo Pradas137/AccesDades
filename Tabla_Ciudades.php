@@ -3,6 +3,18 @@
 <head>
 	<title>Tabla de las ciudades</title>
 	<style>
+		#Contenedor{
+            margin-top: 10px;
+            text-align: center;
+        }
+        #enlace{
+            background-color: black;
+            color: yellow;
+            padding: 10px;
+            border-radius: 20px;
+            text-decoration: none;
+            cursor: pointer;
+        }
  		table,td {
  			border: 1px solid black;
  			border-spacing: 0px;
@@ -41,6 +53,9 @@
 			}
 		}
 		?>
- 	</table>	
+ 	</table>
+ 	 <div id="Contenedor">
+        <a href="Coneccion.php" id="enlace">Seleccionar Paises</a>
+    </div>
 </body>
 </html>
