@@ -30,9 +30,9 @@ ini_set('display_errors', '1');
      $conn = mysqli_connect('localhost','adrian','Hakantor');
      mysqli_select_db($conn, 'world');
 
-     if (isset($_POST['CountryCode']) && isset($_POST['City']) && isset($_POST['District']) && isset($_POST['Population'])) {
+     if (isset($_POST['CodigoPais']) && isset($_POST['Ciudad']) && isset($_POST['Distrito']) && isset($_POST['Poblacion'])) {
 
-        $consulta = "INSERT INTO city (Name,CountryCode,District,Population) VALUES ('".$_POST['City']."','".$_POST['CountryCode']."','".$_POST['District']."',".$_POST['Population'].")";
+        $consulta = "INSERT INTO city (Name,CountryCode,District,Population) VALUES ('".$_POST['Ciudad']."','".$_POST['CodigoPais']."','".$_POST['Distrito']."',".$_POST['Poblacion'].")";
     }
     $consulta = "SELECT Code,Name FROM country;";
     $resultat = mysqli_query($conn, $consulta);
@@ -46,11 +46,8 @@ ini_set('display_errors', '1');
 
     <form method="post" action="Nueva_Ciudad.php">
 
-    <select name="CountryCode" required>
+    <select name="CodigoPais" required>
     <?php
-
-    echo "<option disabled selected value> -- Selecciona un païs -- </option>";
-
     mysqli_data_seek($resultat, 0);
 
     while ($registre = mysqli_fetch_assoc($resultat)) {
@@ -61,10 +58,10 @@ ini_set('display_errors', '1');
     ?>
     </select>
 
-    <input type="text" name="City" placeholder="Ciudad" required>
-    <input type="text" name="District" placeholder="Distrito"required>
-    <input type="number" name="Population" placeholder="Poblacion" required>
-    <input id="enlace" type="Submit" value="Afegir ciutat">
+    <input type="text" name="Ciudad" placeholder="Ciudad" required>
+    <input type="text" name="Distrito" placeholder="Distrito"required>
+    <input type="number" name="Poblacion" placeholder="Poblacion" required>
+    <input id="enlace" type="Submit" value="Añadir ciudad">
 
     </form>
 
