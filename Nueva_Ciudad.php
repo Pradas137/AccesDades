@@ -34,25 +34,26 @@ ini_set('display_errors', '1');
 
         $consulta = "INSERT INTO city (Name,CountryCode,District,Population) VALUES ('".$_POST['Ciudad']."','".$_POST['CodigoPais']."','".$_POST['Distrito']."',".$_POST['Poblacion'].")";
     }
-    $consulta = "SELECT Code,Name FROM country;";
-    $resultat = mysqli_query($conn, $consulta);
-    if (!$resultat) {
+    $consulta = "SELECT name,code FROM country;";
+    $resultado = mysqli_query($conn, $consulta);
+    if (!$resultado) {
         $message  = 'Consulta invàlida: ' . mysqli_error($conn) . "\n";
         $message .= 'Consulta realitzada: ' . $consulta;
         die($message);
     }
     ?>
+
     <h1 align="center">Nueva Ciudad</h1>
 
     <form align="center" method="post" action="Nueva_Ciudad.php">
 
     <select name="CodigoPais" required>
     <?php
-    mysqli_data_seek($resultat, 0);
+    mysqli_data_seek($resultado, 0);
 
-    while ($registre = mysqli_fetch_assoc($resultat)) {
+    while ($registro = mysqli_fetch_assoc($resultado)) {
 
-        echo "<option value=\"".$registre['Code']."\">".$registre['Name']."</option>\n";
+        echo "<option value=\"".$registro['code']."\">".$registro['name']."</option>\n";
     }
 
     ?>
