@@ -19,10 +19,11 @@
  			border: 1px solid black;
  			border-spacing: 0px;
  			font-size: 20px;
- 			width: 50px; height: 50px;
+ 			width: 250px; height: 100px;
+ 			text-align: center;
  		}
  		img{
- 			width: 20px; height: 20px;
+ 			width: 50px; height: 40px;
  		}
  	</style>
 </head>

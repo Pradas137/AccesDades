@@ -26,51 +26,47 @@ ini_set('display_errors', '1');
 </head>
 
 <body>
-     <?php
-     $conn = mysqli_connect('localhost','adrian','Hakantor');
-     mysqli_select_db($conn, 'world');
+    <h1 align="center">Exemple de lectura de dades a MySQL</h1>
 
-     if (isset($_POST['CodigoPais']) && isset($_POST['Ciudad']) && isset($_POST['Distrito']) && isset($_POST['Poblacion'])) {
-
-        $consulta = "INSERT INTO city (Name,CountryCode,District,Population) VALUES ('".$_POST['Ciudad']."','".$_POST['CodigoPais']."','".$_POST['Distrito']."',".$_POST['Poblacion'].")";
-        echo $consulta;
+    <?php
+    $conn = mysqli_connect('localhost','adrian','Hakantor');
+    mysqli_select_db($conn, 'world');
+    if (isset($_POST['CodigoPais']) && isset($_POST['Nombre']) && isset($_POST['Distrito']) && isset($_POST['Poblacion']))
+    {
+        $consulta = "INSERT INTO city (Name,CountryCode,District,Population) VALUES ('".$_POST['Nombre']."','".$_POST['CodigoPais']."','".$_POST['Distrito']."',".$_POST['Poblacion'].")";
+        if (mysqli_query($conn, $consulta)) {
+            echo "<p align='center'>Nueva Ciudad Añadida<p>";
+        } else {
+            echo "<p align='center'>Error al Añadir la Ciudad</p>";
+        }
     }
-    
-    $consulta = "SELECT name,code FROM country;";
-    $resultado = mysqli_query($conn, $consulta);
-    if (!$resultado) {
+
+    $consulta = "SELECT Code,Name FROM country;";
+    $resultat = mysqli_query($conn, $consulta);
+    if (!$resultat) {
         $message  = 'Consulta invàlida: ' . mysqli_error($conn) . "\n";
         $message .= 'Consulta realitzada: ' . $consulta;
         die($message);
     }
     ?>
-
-    <h1 align="center">Nueva Ciudad</h1>
+    <h1 align="center">Añadir una Ciudad</h1>
 
     <form align="center" method="post" action="Nueva_Ciudad.php">
-
     <select name="CodigoPais" required>
     <?php
-    mysqli_data_seek($resultado, 0);
-
-    while ($registro = mysqli_fetch_assoc($resultado)) {
-
-        echo "<option value=\"".$registro['code']."\">".$registro['name']."</option>\n";
+    mysqli_data_seek($resultat, 0);
+    while ($registro = mysqli_fetch_assoc($resultat)) {
+        echo "<option value=\"".$registro['Code']."\">".$registro['Name']."</option>\n";
     }
-
     ?>
-    </select>
-
-    <input type="text" name="Ciudad" placeholder="Ciudad" required>
-    <input type="text" name="Distrito" placeholder="Distrito"required>
-    <input type="number" name="Poblacion" placeholder="Poblacion" required>
-    <input id="enlace" type="Submit" value="Añadir ciudad">
-
+    </select><br>
+    Ciudad:<input type="text" name="Nombre" placeholder="Ciudad" required><br>
+    Distrito:<input type="text" name="Distrito" placeholder="Distrito"required><br>
+    Poblacion:<input type="number" name="Poblacion" placeholder="Poblacion" required><br>
+    <input id="enlace" type="Submit" value="Añadir">
     </form>
-
-    <div id="Contenedor">
-        <a href="Coneccion.php" id="enlace">Seleccionar Paises</a>
+ <div id="Contenedor">
+        <a href="Coneccion.php" id="enlace">Seleccionar Ciudades</a>
     </div>
-</body>
-
+ </body>
 </html>
