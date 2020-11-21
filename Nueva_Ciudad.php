@@ -66,7 +66,7 @@ ini_set('display_errors', '1');
     </form>
 
     <div id="Contenedor">
-        <a href="Coneccion.php" id="enlace">Nueva Ciudad</a>
+        <a href="Coneccion.php" id="enlace">Seleccionar Paises</a>
     </div>
 </body>
 
