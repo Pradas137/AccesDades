@@ -29,12 +29,12 @@ ini_set('display_errors', '1');
     <h1 align="center">Exemple de lectura de dades a MySQL</h1>
 
     <?php
-    $conn = mysqli_connect('localhost','adrian','Hakantor');
-    mysqli_select_db($conn, 'world');
+    $conexion = mysqli_connect('localhost','adrian','Hakantor');
+    mysqli_select_db($conexion, 'world');
     if (isset($_POST['CodigoPais']) && isset($_POST['Nombre']) && isset($_POST['Distrito']) && isset($_POST['Poblacion']))
     {
         $consulta = "INSERT INTO city (Name,CountryCode,District,Population) VALUES ('".$_POST['Nombre']."','".$_POST['CodigoPais']."','".$_POST['Distrito']."',".$_POST['Poblacion'].")";
-        if (mysqli_query($conn, $consulta)) {
+        if (mysqli_query($conexion, $consulta)) {
             echo "<p align='center'>Nueva Ciudad Añadida<p>";
         } else {
             echo "<p align='center'>Error al Añadir la Ciudad</p>";
@@ -42,11 +42,11 @@ ini_set('display_errors', '1');
     }
 
     $consulta = "SELECT Code,Name FROM country;";
-    $resultat = mysqli_query($conn, $consulta);
+    $resultat = mysqli_query($conexion, $consulta);
     if (!$resultat) {
-        $message  = 'Consulta invàlida: ' . mysqli_error($conn) . "\n";
-        $message .= 'Consulta realitzada: ' . $consulta;
-        die($message);
+        $mensaje  = 'Consulta invàlida: ' . mysqli_error($conn) . "\n";
+        $mensaje .= 'Consulta realitzada: ' . $consulta;
+        die($mensaje);
     }
     ?>
     <h1 align="center">Añadir una Ciudad</h1>
