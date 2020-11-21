@@ -56,7 +56,7 @@
 		?>
  	</table>
  	 <div id="Contenedor">
-        <a href="Coneccion.php" id="enlace">Seleccionar Paises</a>
+        <a href="ConeccionHome.php" id="enlace">Seleccionar Paises</a>
     </div>
 </body>
 </html>
