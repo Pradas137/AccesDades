@@ -42,9 +42,9 @@ ini_set('display_errors', '1');
         die($message);
     }
     ?>
-    <h1>Nueva Ciudad</h1>
+    <h1 align="center">Nueva Ciudad</h1>
 
-    <form method="post" action="Nueva_Ciudad.php">
+    <form align="center" method="post" action="Nueva_Ciudad.php">
 
     <select name="CodigoPais" required>
     <?php
