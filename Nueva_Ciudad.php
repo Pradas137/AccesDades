@@ -33,7 +33,9 @@ ini_set('display_errors', '1');
      if (isset($_POST['CodigoPais']) && isset($_POST['Ciudad']) && isset($_POST['Distrito']) && isset($_POST['Poblacion'])) {
 
         $consulta = "INSERT INTO city (Name,CountryCode,District,Population) VALUES ('".$_POST['Ciudad']."','".$_POST['CodigoPais']."','".$_POST['Distrito']."',".$_POST['Poblacion'].")";
+        echo $consulta;
     }
+    
     $consulta = "SELECT name,code FROM country;";
     $resultado = mysqli_query($conn, $consulta);
     if (!$resultado) {
