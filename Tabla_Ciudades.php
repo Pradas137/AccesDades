@@ -3,6 +3,9 @@
 <head>
 	<title>Tabla de las ciudades</title>
 	<style>
+		label{
+            font-size: 30px;
+        }
 		#Contenedor{
             margin-top: 10px;
             text-align: center;
@@ -28,11 +31,12 @@
  	</style>
 </head>
 <body>
+	<h1 align="center">Exemple de lectura de dades a MySQL</h1>
 	<?php
-	$conn = mysqli_connect('localhost','adrian','Hakantor');
-	mysqli_select_db($conn, 'world');
+	$conexion = mysqli_connect('localhost','adrian','Hakantor');
+	mysqli_select_db($conexion, 'world');
 	$consulta = "SELECT name,code FROM country;";
-	$resultat = mysqli_query($conn, $consulta);
+	$resultat = mysqli_query($conexion, $consulta);
     ?>
     <h1 align="center">Ciudades</h1>
 	<table align="center">
@@ -42,13 +46,13 @@
 		<?php
 		if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_POST["pais"])) {
 			$consultaCity = "select coun.Name, cit.Name, coun.Code from country coun, city cit where coun.Code = cit.CountryCode and coun.Name = '".$_POST['pais']."';";
-			$resultat = mysqli_query($conn ,$consultaCity);
+			$resultat = mysqli_query($conexion ,$consultaCity);
 			if ($resultat) {
-				while($row = mysqli_fetch_assoc($resultat)) {
-					$img = "<img src='./Banderas/".strtolower($row['Code']).".gif'/>";
+				while($fila = mysqli_fetch_assoc($resultat)) {
+					$img = "<img src='./Banderas/".strtolower($fila['Code']).".gif'/>";
 					echo "\t<tr>\n";
 					echo "<td>".$img."</td>";
-					echo "<td>".$row['Name']."</td>";
+					echo "<td>".$fila['Name']."</td>";
 					echo "\t</tr>\n";
 				}
 			}

@@ -7,6 +7,9 @@ ini_set('display_errors', '1');
  <head>
  	<title>Exemple de lectura de dades a MySQL</title>
     <style type="text/css">
+        label{
+            font-size: 30px;
+        }
         #Contenedor{
             margin-top: 10px;
             text-align: center;
@@ -23,14 +26,15 @@ ini_set('display_errors', '1');
  </head>
  
  <body>
- 	<h1 align="center">Exemple de lectura de dades a MySQL</h1>
+    <h1 align="center">Exemple de lectura de dades a MySQL</h1>
     <form align="center" action="Tabla_Ciudades.php" method="post">
+        <label>Paises:</label><br>
     	<select id="desplegable" name="pais">
     		<?php
-    		$conn = mysqli_connect('localhost','adrian','Hakantor');
-    		mysqli_select_db($conn, 'world');
+    		$conexion = mysqli_connect('localhost','adrian','Hakantor');
+    		mysqli_select_db($conexion, 'world');
     		$consulta = "SELECT name,code FROM country;";
-    		$resultat = mysqli_query($conn, $consulta);
+    		$resultat = mysqli_query($conexion, $consulta);
     		if (!$resultat) {
     			$message  = 'Consulta invàlida: ' . mysqli_error() . "\n";
     			$message .= 'Consulta realitzada: ' . $consulta;
@@ -38,8 +42,8 @@ ini_set('display_errors', '1');
     		}
 
     		if ($resultat) {
-    			while($row = mysqli_fetch_assoc($resultat)) {
-    				echo "<option>".$row['name']."</option>";
+    			while($fila = mysqli_fetch_assoc($resultat)) {
+    				echo "<option>".$fila['name']."</option>";
     			}
     		}
     		?>	

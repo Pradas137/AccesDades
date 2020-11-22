@@ -10,6 +10,9 @@ ini_set('display_errors', '1');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nueva Ciudad</title>
     <style type="text/css">
+        label{
+            font-size: 30px;
+        }
         #Contenedor{
             margin-top: 10px;
             text-align: center;
@@ -44,7 +47,7 @@ ini_set('display_errors', '1');
     $consulta = "SELECT Code,Name FROM country;";
     $resultat = mysqli_query($conexion, $consulta);
     if (!$resultat) {
-        $mensaje  = 'Consulta invàlida: ' . mysqli_error($conn) . "\n";
+        $mensaje  = 'Consulta invàlida: ' . mysqli_error($conexion) . "\n";
         $mensaje .= 'Consulta realitzada: ' . $consulta;
         die($mensaje);
     }
@@ -56,8 +59,8 @@ ini_set('display_errors', '1');
     <select name="CodigoPais" required>
     <?php
     mysqli_data_seek($resultat, 0);
-    while ($registro = mysqli_fetch_assoc($resultat)) {
-        echo "<option value=\"".$registro['Code']."\">".$registro['Name']."</option>\n";
+    while ($fila = mysqli_fetch_assoc($resultat)) {
+        echo "<option value=\"".$fila['Code']."\">".$fila['Name']."</option>\n";
     }
     ?>
     </select><br>
