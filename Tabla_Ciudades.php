@@ -41,7 +41,7 @@
 		</thead>
 		<?php
 		if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_POST["pais"])) {
-			$consultaCity = "select c.Name, ct.Name, c.Code from country c, city ct where c.Code = ct.CountryCode and c.Name = '".$_POST['pais']."';";
+			$consultaCity = "select coun.Name, cit.Name, coun.Code from country coun, city cit where coun.Code = cit.CountryCode and coun.Name = '".$_POST['pais']."';";
 			$resultat = mysqli_query($conn ,$consultaCity);
 			if ($resultat) {
 				while($row = mysqli_fetch_assoc($resultat)) {
@@ -54,7 +54,7 @@
 			}
 		}
 		?>
- 	</table>
+ 	</table><br>
  	 <div id="Contenedor">
         <a href="ConeccionHome.php" id="enlace">Seleccionar Paises</a>
     </div>

@@ -43,9 +43,9 @@ ini_set('display_errors', '1');
     			}
     		}
     		?>	
- 		</select>
+ 		</select><br><br>
  		<input id="enlace" type="submit" name="submit" value="Seleccionar">
- 	</form>
+ 	</form><br>
      <div id="Contenedor">
         <a href="Nueva_Ciudad.php" id="enlace">Nueva Ciudad</a>
     </div>

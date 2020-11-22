@@ -52,6 +52,7 @@ ini_set('display_errors', '1');
     <h1 align="center">Añadir una Ciudad</h1>
 
     <form align="center" method="post" action="Nueva_Ciudad.php">
+    <label >Pais:</label><br>
     <select name="CodigoPais" required>
     <?php
     mysqli_data_seek($resultat, 0);
@@ -60,11 +61,14 @@ ini_set('display_errors', '1');
     }
     ?>
     </select><br>
-    Ciudad:<input type="text" name="Nombre" placeholder="Ciudad" required><br>
-    Distrito:<input type="text" name="Distrito" placeholder="Distrito"required><br>
-    Poblacion:<input type="number" name="Poblacion" placeholder="Poblacion" required><br>
+    <label>Ciudad:</label><br>
+    <input type="text" name="Nombre" placeholder="Ciudad" required><br>
+    <label>Distrito:</label><br>
+    <input type="text" name="Distrito" placeholder="Distrito"required><br>
+    <label>Poblacion:</label><br>
+    <input type="number" name="Poblacion" placeholder="Poblacion" required><br>
     <input id="enlace" type="Submit" value="Añadir">
-    </form>
+    </form><br>
  <div id="Contenedor">
         <a href="ConeccionHome.php" id="enlace">Seleccionar Ciudades</a>
     </div>
