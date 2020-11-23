@@ -56,7 +56,7 @@ ini_set('display_errors', '1');
         }
     }
 
-    $consulta = "SELECT Code,Name FROM country;";
+    $consulta = "SELECT code,name FROM country;";
     $resultat = mysqli_query($conexion, $consulta);
     if (!$resultat) {
         $mensaje  = 'Consulta invàlida: ' . mysqli_error($conexion) . "\n";
@@ -72,7 +72,7 @@ ini_set('display_errors', '1');
     <?php
     mysqli_data_seek($resultat, 0);
     while ($fila = mysqli_fetch_assoc($resultat)) {
-        echo "<option value=\"".$fila['Code']."\">".$fila['Name']."</option>\n";
+        echo "<option value=\"".$fila['code']."\">".$fila['name']."</option>\n";
     }
     ?>
     </select><br>

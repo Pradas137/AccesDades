@@ -46,7 +46,7 @@ ini_set('display_errors', '1');
     		<?php
     		$conexion = mysqli_connect('localhost','adrian','Hakantor');
     		mysqli_select_db($conexion, 'world');
-    		$consulta = "SELECT name,code FROM country;";
+            $consulta = "SELECT code,name FROM country;";
     		$resultat = mysqli_query($conexion, $consulta);
     		if (!$resultat) {
     			$message  = 'Consulta invàlida: ' . mysqli_error() . "\n";
