@@ -5,7 +5,7 @@ ini_set('display_errors', '1');
 <!DOCTYPE html>
 <html>
  <head>
- 	<title>Exemple de lectura de dades a MySQL</title>
+ 	<title>Seleccionar Pais</title>
     <style type="text/css">
         body{
             background: #00FFFF;
