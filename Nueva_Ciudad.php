@@ -10,8 +10,19 @@ ini_set('display_errors', '1');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nueva Ciudad</title>
     <style type="text/css">
+        body{
+            background: #00FFFF;
+        }
         label{
             font-size: 30px;
+        }
+
+        #desplegable{
+            font-size: 20px;
+        }
+
+        input{
+            font-size: 20px;
         }
         #Contenedor{
             margin-top: 10px;
@@ -24,6 +35,7 @@ ini_set('display_errors', '1');
             border-radius: 20px;
             text-decoration: none;
             cursor: pointer;
+            font-size: 25px;
         }
     </style>
 </head>
@@ -56,7 +68,7 @@ ini_set('display_errors', '1');
 
     <form align="center" method="post" action="Nueva_Ciudad.php">
     <label >Pais:</label><br>
-    <select name="CodigoPais" required>
+    <select id="desplegable" name="CodigoPais" required>
     <?php
     mysqli_data_seek($resultat, 0);
     while ($fila = mysqli_fetch_assoc($resultat)) {
@@ -69,7 +81,7 @@ ini_set('display_errors', '1');
     <label>Distrito:</label><br>
     <input type="text" name="Distrito" placeholder="Distrito"required><br>
     <label>Poblacion:</label><br>
-    <input type="number" name="Poblacion" placeholder="Poblacion" required><br>
+    <input type="number" name="Poblacion" placeholder="Poblacion" required><br><br>
     <input id="enlace" type="Submit" value="Añadir">
     </form><br>
  <div id="Contenedor">

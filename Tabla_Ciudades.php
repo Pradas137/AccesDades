@@ -3,12 +3,16 @@
 <head>
 	<title>Tabla de las ciudades</title>
 	<style>
+		body{
+			background: #00FFFF;
+		}
 		label{
             font-size: 30px;
         }
 		#Contenedor{
             margin-top: 10px;
             text-align: center;
+            font-size: 25px;
         }
         #enlace{
             background-color: black;
@@ -19,11 +23,13 @@
             cursor: pointer;
         }
  		table,td {
- 			border: 1px solid black;
+ 			border: 1px solid yellow;
  			border-spacing: 0px;
- 			font-size: 20px;
+ 			font-size: 25px;
  			width: 250px; height: 100px;
  			text-align: center;
+ 			background: black;
+ 			color: yellow;
  		}
  		img{
  			width: 50px; height: 40px;

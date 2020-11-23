@@ -7,6 +7,9 @@ ini_set('display_errors', '1');
  <head>
  	<title>Exemple de lectura de dades a MySQL</title>
     <style type="text/css">
+        body{
+            background: #00FFFF;
+        }
         label{
             font-size: 30px;
         }
@@ -14,6 +17,15 @@ ini_set('display_errors', '1');
             margin-top: 10px;
             text-align: center;
         }
+
+        #desplegable{
+            font-size: 20px;
+        }
+
+        input{
+            font-size: 20px;
+        }
+
         #enlace{
             background-color: black;
             color: yellow;
@@ -21,6 +33,7 @@ ini_set('display_errors', '1');
             border-radius: 20px;
             text-decoration: none;
             cursor: pointer;
+            font-size: 25px;
         }
     </style>
  </head>
