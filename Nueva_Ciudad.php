@@ -85,7 +85,7 @@ ini_set('display_errors', '1');
     <input id="enlace" type="Submit" value="Añadir">
     </form><br>
  <div id="Contenedor">
-        <a href="ConeccionHome.php" id="enlace">Seleccionar Ciudades</a>
+        <a href="Seleccionar_Paises.php" id="enlace">Seleccionar Ciudades</a>
     </div>
  </body>
 </html>

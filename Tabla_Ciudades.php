@@ -70,7 +70,7 @@ ini_set('display_errors', '1');
 		?>
  	</table><br>
  	 <div id="Contenedor">
-        <a href="ConeccionHome.php" id="enlace">Seleccionar Paises</a>
+        <a href="Seleccionar_Paises.php" id="enlace">Seleccionar Paises</a>
     </div>
 </body>
 </html>
