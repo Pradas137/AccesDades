@@ -1,6 +1,6 @@
 # AccesDades
 ## Instalacion.
-- Tienes que tener instalado LAMP o XAMPP (Linux) o (Windows).
+- Instalar LAMP para (Linux)  o XAMPP para (Windows).
 - Sudo apt update.
 - Sudo apt install mysql-server.
 - Crear Usuario en MySQL, con Password. y permisos.
